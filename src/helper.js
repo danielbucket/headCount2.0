@@ -2,40 +2,39 @@
 
 export default class DistrictRepository {
   constructor(data) {
-    this.data = this.formatData(data)
+    this.data = this.formatData(data);
   }
 
   formatData(raw) {
     return raw.reduce( (formattedData, curVal) => {
       let { Location, TimeFrame, Data } = curVal;
-      Data = parseFloat(Data).toFixed(3)*1
-      // console.log(Data);
 
+      Data = parseFloat(Data).toFixed(3) * 1; //round to 3 digits
+      isNaN(Data) ? Data = 0.000 : '';
 
       if (!formattedData[Location]) {
-           formattedData[Location] = {}
-           formattedData[Location].location = Location
-           formattedData[Location].data = {}
+           formattedData[Location] = {};
+           formattedData[Location].location = Location;
+           formattedData[Location].data = {};
       }
-      formattedData[Location].data[TimeFrame] = Data
+      formattedData[Location].data[TimeFrame] = Data;
       return formattedData;
     }, {})
   };
 
   //Iteration 1 part 1
     findByName (userSearch) {
+      if (!userSearch) {
+        return undefined;
+      }
+
       const locationKeys = Object.keys(this.data)
 
-      let searchIndex = locationKeys.findIndex( (el) => {
+      let searchIndex = locationKeys.findIndex( el => {
         return userSearch.toUpperCase() === el.toUpperCase()
       })
 
       return this.data[locationKeys[searchIndex]]
-
-      //round to the nearest hundredth ==> numObj.toFixed(3)
-      //sanitized, i.e. defaults to 0 if no data available, see 'ARICKAREE R-2'
-      //maybe use this function ==> .includes(userSearch)
-      //return object
     }
 
   //Iteration 1 part 2
