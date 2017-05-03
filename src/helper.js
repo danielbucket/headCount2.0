@@ -10,7 +10,9 @@ export default class DistrictRepository {
       let { Location, TimeFrame, Data } = curVal;
 
       Data = parseFloat(Data).toFixed(3) * 1;
-      isNaN(Data) ? Data = 0.000 : '';
+      if(isNaN(Data)) {
+        Data = 0.000;
+      };
 
       if (!formattedData[Location]) {
         formattedData[Location] = {};
@@ -26,12 +28,12 @@ export default class DistrictRepository {
       if (userSearch === undefined){
         return undefined;
       }
-      
+
       const locationKeys = Object.keys(this.data)
       const result = []
 
       locationKeys.forEach( (location, index) => {
-        if (location.toUpperCase().indexOf(userSearch.toUpperCase()) != -1 ) {
+        if (location.toUpperCase().indexOf(userSearch.toUpperCase()) !== -1 ) {
           result.push(this.data[locationKeys[index]]);
         }
       })
@@ -43,7 +45,7 @@ export default class DistrictRepository {
       const result = []
 
       locationKeys.forEach( (location, index) => {
-        if (location.toUpperCase().indexOf(userSearch.toUpperCase()) != -1 ) {
+        if (location.toUpperCase().indexOf(userSearch.toUpperCase()) !== -1 ) {
           result.push(this.data[locationKeys[index]]);
         }
       })
