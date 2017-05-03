@@ -7,21 +7,31 @@ export default class DistrictRepository {
 
   formatData(raw) {
     return raw.reduce( (formattedData, curVal) => {
+      let { Location, TimeFrame, Data } = curVal;
+      Data = parseFloat(Data).toFixed(3)*1
+      // console.log(Data);
 
-      !formattedData[curVal.Location] ?
-       formattedData[curVal.Location] = [] :
-       formattedData[curVal.Location].push(
-        { [curVal.TimeFrame]: curVal.Data }
-      )
 
+      if (!formattedData[Location]) {
+           formattedData[Location] = {}
+           formattedData[Location].location = Location
+           formattedData[Location].data = {}
+      }
+      formattedData[Location].data[TimeFrame] = Data
       return formattedData;
     }, {})
-    console.log(baseValue);
   };
 
   //Iteration 1 part 1
     findByName (userSearch) {
-      //case insensitive search ==> toLowerCase()
+      const locationKeys = Object.keys(this.data)
+
+      let searchIndex = locationKeys.findIndex( (el) => {
+        return userSearch.toUpperCase() === el.toUpperCase()
+      })
+
+      return this.data[locationKeys[searchIndex]]
+
       //round to the nearest hundredth ==> numObj.toFixed(3)
       //sanitized, i.e. defaults to 0 if no data available, see 'ARICKAREE R-2'
       //maybe use this function ==> .includes(userSearch)
@@ -31,7 +41,6 @@ export default class DistrictRepository {
   //Iteration 1 part 2
     findAllMatches () {
       //same as above, but include all hits, e.g. 'Colorado' and 'Colorado Springs'
-
     }
 
   };
