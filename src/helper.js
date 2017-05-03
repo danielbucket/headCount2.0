@@ -23,6 +23,10 @@ export default class DistrictRepository {
   };
 
     findByName (userSearch) {
+      if (userSearch === undefined){
+        return undefined;
+      }
+      
       const locationKeys = Object.keys(this.data)
       const result = []
 
