@@ -5,41 +5,45 @@ export default class DistrictRepository {
     this.data = this.formatData(data);
   }
 
-  formatData(raw) {
-    return raw.reduce( (formattedData, curVal) => {
+  formatData(rawData) {
+    return rawData.reduce( (formattedData, curVal) => {
       let { Location, TimeFrame, Data } = curVal;
 
-      Data = parseFloat(Data).toFixed(3) * 1; //round to 3 digits
+      Data = parseFloat(Data).toFixed(3) * 1;
       isNaN(Data) ? Data = 0.000 : '';
 
       if (!formattedData[Location]) {
-           formattedData[Location] = {};
-           formattedData[Location].location = Location;
-           formattedData[Location].data = {};
+        formattedData[Location] = {};
+        formattedData[Location].location = Location;
+        formattedData[Location].data = {};
       }
       formattedData[Location].data[TimeFrame] = Data;
       return formattedData;
     }, {})
   };
 
-  //Iteration 1 part 1
     findByName (userSearch) {
-      if (!userSearch) {
-        return undefined;
-      }
-
       const locationKeys = Object.keys(this.data)
+      const result = []
 
-      let searchIndex = locationKeys.findIndex( el => {
-        return userSearch.toUpperCase() === el.toUpperCase()
+      locationKeys.forEach( (location, index) => {
+        if (location.toUpperCase().indexOf(userSearch.toUpperCase()) != -1 ) {
+          result.push(this.data[locationKeys[index]]);
+        }
       })
-
-      return this.data[locationKeys[searchIndex]]
+      return result[0];
     }
 
-  //Iteration 1 part 2
-    findAllMatches () {
-      //same as above, but include all hits, e.g. 'Colorado' and 'Colorado Springs'
+    findAllMatches (userSearch = '') {
+      const locationKeys = Object.keys(this.data)
+      const result = []
+
+      locationKeys.forEach( (location, index) => {
+        if (location.toUpperCase().indexOf(userSearch.toUpperCase()) != -1 ) {
+          result.push(this.data[locationKeys[index]]);
+        }
+      })
+      return result;
     }
 
   };
