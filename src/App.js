@@ -14,7 +14,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>Welcome To Headcount 2.0
+      <div id="heading">Welcome To Headcount 2.0
         <CardList districtData={ this.state.districts }/>
       </div>
     );
