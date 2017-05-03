@@ -3,3 +3,24 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.low-percent {
+  color: red;
+}
+
+.high-percent {
+  color: blue;
+}
+
+
+.card-container {
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.district-card {
+  border: 1px solid black;
+  max-width: 150px;
+}

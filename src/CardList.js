@@ -7,7 +7,7 @@ const CardList = ({ districtData }) => {
   })
 
   return (
-    <div>{ cardArr }</div>
+    <div className="card-container">{ cardArr }</div>
   )
 
 }
