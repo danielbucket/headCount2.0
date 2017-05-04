@@ -9,6 +9,8 @@ export default class DistrictRepository {
     return rawData.reduce( (formattedData, curVal) => {
       let { Location, TimeFrame, Data } = curVal;
 
+      Location = Location.toUpperCase()
+
       Data = parseFloat(Data).toFixed(3) * 1;
       if(isNaN(Data)) {
         Data = 0.000;
@@ -24,32 +26,19 @@ export default class DistrictRepository {
     }, {})
   };
 
-    findByName (userSearch) {
-      if (userSearch === undefined){
-        return undefined;
-      }
-
-      const locationKeys = Object.keys(this.data)
-      const result = []
-
-      locationKeys.forEach( (location, index) => {
-        if (location.toUpperCase().indexOf(userSearch.toUpperCase()) !== -1 ) {
-          result.push(this.data[locationKeys[index]]);
-        }
-      })
-      return result[0];
+    findByName (userSearch='') {
+      return this.data[userSearch.toUpperCase()]
     }
 
     findAllMatches (userSearch = '') {
       const locationKeys = Object.keys(this.data)
-      const result = []
 
-      locationKeys.forEach( (location, index) => {
+      return locationKeys.reduce( (arr, location, index) => {
         if (location.toUpperCase().indexOf(userSearch.toUpperCase()) !== -1 ) {
-          result.push(this.data[locationKeys[index]]);
+          arr.push(this.data[locationKeys[index]]);
         }
-      })
-      return result;
+        return arr
+      }, [])
     }
 
     findAverage (userDistrict) {
