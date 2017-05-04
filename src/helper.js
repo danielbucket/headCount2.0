@@ -1,6 +1,6 @@
 // import kinderData from '../data/kindergartners_in_full_day_program';
 
-export default class DistrictRepository {
+ class DistrictRepository {
   constructor(data) {
     this.data = this.formatData(data);
   }
@@ -64,3 +64,4 @@ export default class DistrictRepository {
     }
 
   };
+export default DistrictRepository
