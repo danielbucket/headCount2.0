@@ -6,7 +6,7 @@ const Card = ( {district} ) => {
 
   const yearData = yearKeys.map( year => {
     district.data[year] <= 0.5 ? highLowClass = 'low-percent' : highLowClass = 'high-percent';
-    return <h4 className = {highLowClass}
+    return <h4 className={highLowClass}
                key={year} >
                {year}: {district.data[year]}
            </h4>
