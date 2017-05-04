@@ -52,19 +52,26 @@ export default class DistrictRepository {
       return result;
     }
 
+    findAverage (userDistrict) {
+      let yearObj = this.findByName(userDistrict).data;
+      let yearObjKeys = Object.keys(yearObj);
+
+      let numerator = yearObjKeys.reduce( (sum, curVal) => {
+        return sum += yearObj[curVal];
+      }, 0)
+
+      return (numerator / yearObjKeys.length).toFixed(3) * 1;
+    }
+
+    compareDistrictAverages (userDistrict1, userDistrict2) {
+      let avg1 = this.findAverage(userDistrict1);
+      let avg2 = this.findAverage(userDistrict2);
+
+      return {
+        [userDistrict1.toUpperCase()]: avg1,
+        [userDistrict2.toUpperCase()]: avg2,
+        'compared': (avg1 / avg2).toFixed(3) * 1
+      }
+    }
+
   };
-
-  //data example object?:
-  // {
-  //   Colorado: {'2004': 0.302, '2005'; 0.352 },
-  //   'Aacdemy 20': {'2004': 0.564, '2005': 0.678},
-  //   'Adams County 14': {'2005': 0.354, '2006': 0.465, '2007': 0.576}
-  // }
-
-
-  // findByName exampleObject:
-  // district.findByName('Academy 20')
-  // {
-  //   location: 'Academy 20',
-  //   data: {"2004": 0.302, "2005": 0.267, "2006": 0.354, "2007": 0.392, "2008": 0.385, "2009": 0.39, "2010": 0.436, "2011": 0.489, "2012": 0.479, "2013": 0.488, "2014": 0.49}
-  // }
