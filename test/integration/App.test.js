@@ -7,7 +7,7 @@ let app;
 let wrapperMount;
 let wrapperShallow;
 
-describe('App', () => {
+describe.skip('App', () => {
 
   beforeEach(() => {
      app = new App;
@@ -25,11 +25,6 @@ describe('App', () => {
   it('should have a heading', () => {
     let heading = wrapperShallow.find("#heading")
     expect(heading.length).toEqual(1)
-  })
-
-  it.skip('should create a card', () => {
-    let card = wrapperShallow.find(".card")
-    // expect(wrapperMount.node.state).
   })
 
 })
