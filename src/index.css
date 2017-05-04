@@ -12,7 +12,7 @@ body {
   color: blue;
 }
 
-.card-container {
+.card-container, .compare-cards-container {
   font-size: 10px;
   display: flex;
   justify-content: center;
