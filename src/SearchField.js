@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class SearchField extends Component {
-  constructor() {
-    super();
-    this.state = {
-      search: ''
-    }
+const SearchField = ({ onChange }) => {
+
+  const submitChange = (userSearchInput) => {
+    onChange(userSearchInput)
   }
 
-  render() {
-    return(
-      <div id="search-container">
-        <input  id="search-input"
-                placeholder="search"
-                value={ this.state.search }
-                onChange={ e => {this.setState({ search: e.target.value })}}
-              />
-
-      </div>
-    )
-  }
-
+  return(
+    <div id="search-container">
+      <input  id="search-input"
+              placeholder="search"
+              onChange={ e => { submitChange(e.target.value) } }
+      />
+    </div>
+  )
 
 }
+
+export default SearchField;
