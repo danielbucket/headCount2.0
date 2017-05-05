@@ -23,6 +23,8 @@ class App extends Component {
       compareCards:[
         districtRepository.data['ACADEMY 20'],
         districtRepository.data['COLORADO']
+        // 'cardLeft': "",
+        // 'cardRight': ""
       ]
     })
   }
@@ -33,9 +35,17 @@ class App extends Component {
     })
   }
 
-  handleClick () {
+  handleClick (district) {
+    // console.log(district);
+
     //add class to highlight card
     //setState to populate compareCards array
+    let compareCardsArray = this.state.compareCards
+    compareCardsArray.splice(0, 1, district)
+
+      // console.log(compareCardsArray);
+    // this.setState({compareCards.push()})
+
     //unclick it- if the card has class "clicked", remove it
   }
 
@@ -46,7 +56,8 @@ class App extends Component {
         <CompareCards   cardsToCompare={ this.state.compareCards }
                         districtClass={ districtRepository }
         />
-        <CardList districtData={ this.state.districts }/>
+        <CardList districtData={ this.state.districts }
+                  handleClick={ this.handleClick.bind(this)}/>
       </div>
     );
   }
