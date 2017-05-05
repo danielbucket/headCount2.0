@@ -1,6 +1,8 @@
 import React from 'react';
+var cardClass = 'district-card-unclicked';
 
-const Card = ( {district} ) => {
+const Card = ( {district, handleClick} ) => {
+  console.log(handleClick);
   let highLowClass;
   let yearKeys = Object.keys(district.data)
 
@@ -12,8 +14,23 @@ const Card = ( {district} ) => {
            </h4>
   })
 
+  const manageClick = () => {
+
+    if (cardClass === 'district-card-unclicked') {
+      cardClass = 'district-card-clicked'
+    } else if (cardClass === 'district-card-clicked') {
+      cardClass = 'district-card-unclicked'
+    }
+    console.log(cardClass);
+    //the cardClass value is changing, but a render needs to happen before the changes can take place
+
+    handleClick(district)
+  }
+
   return (
-    <div className="district-card">
+    <div className={ cardClass }
+          onClick={ e => { manageClick() }}
+          >
       <h3 className="district-name">{ district.location }</h3>
       <div className="year-data">{ yearData }</div>
     </div>

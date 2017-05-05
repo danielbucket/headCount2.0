@@ -19,7 +19,7 @@ body {
   flex-wrap: wrap;
 }
 
-.district-card {
+.district-card-clicked {
   border: 1px solid black;
   max-width: 150px;
 }

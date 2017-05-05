@@ -1,9 +1,11 @@
 import React from 'react';
 import Card from './Card';
 
-const CardList = ({ districtData }) => {
+const CardList = ({ districtData, handleClick }) => {
   const cardArr = Object.keys(districtData).map( district => {
-    return <Card district={ districtData[district] } key={ district } />
+    return <Card district={ districtData[district] }
+                 key={ district }
+                 handleClick={ handleClick }/>
   })
 
   return (
