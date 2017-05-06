@@ -7,6 +7,11 @@ import SearchField from './SearchField'
 import CompareCards from './CompareCards'
 
 let districtRepository = new DistrictRepository(kinderData)
+let compareCardsArray;
+let leftCardBlankUpdate;
+let rightCardBlankUpdate;
+let leftRightIndicatorUpdate;
+
 
 class App extends Component {
   constructor () {
@@ -14,18 +19,16 @@ class App extends Component {
     this.state = {
       districts: '',
       compareCards: [],
+      leftRightIndicator: 'left', // card added most recently
+      leftCardBlank: true,
+      rightCardBlank: true
     }
   }
 
   componentDidMount () {
     this.setState({
       districts: districtRepository.data,
-      compareCards:[
-        districtRepository.data['ACADEMY 20'],
-        districtRepository.data['COLORADO']
-        // 'cardLeft': "",
-        // 'cardRight': ""
-      ]
+      compareCards:[{location: 'leftCardBlank'}, {location: 'rightCardBlank'}]
     })
   }
 
@@ -36,28 +39,77 @@ class App extends Component {
   }
 
   handleClick (district) {
-    // console.log(district);
+    compareCardsArray = this.state.compareCards;
+    leftCardBlankUpdate = this.state.leftCardBlank;
+    rightCardBlankUpdate = this.state.rightCardBlank;
 
-    //add class to highlight card
-    //setState to populate compareCards array
-    let compareCardsArray = this.state.compareCards
-    compareCardsArray.splice(0, 1, district)
+    //Location has already been selected
+  if (district.location === compareCardsArray[0].location ||
+      district.location === compareCardsArray[1].location) {
+    this.updateSelectedCards (district)
+  }
 
-      // console.log(compareCardsArray);
-    // this.setState({compareCards.push()})
+    //At least one of the cards is blank
+    else if ( compareCardsArray[0].location === 'leftCardBlank' ||
+              compareCardsArray[1].location === 'rightCardBlank' ) {
+    this.updateAtLeastOneCardBlank(district)
 
-    //unclick it- if the card has class "clicked", remove it
+
+          //Both cards are populated {
+    } else if ( compareCardsArray[0].location !== 'leftCardBlank' &&
+                compareCardsArray[1].location !== 'rightCardBlank') {
+      this.updateBothCardsPopulated(district)
+      }
+
+    this.setState({
+      compareCards: compareCardsArray,
+      leftRightIndicator: leftRightIndicatorUpdate,
+      leftCardBlank: leftCardBlankUpdate,
+      rightCardBlank: rightCardBlankUpdate
+    })
+
+  }
+
+  updateSelectedCards (district) {
+    const indexToRemove = compareCardsArray.findIndex( card => card.location === district.location )
+    let leftRight;
+    indexToRemove ? leftRight = 'rightCardBlank' : leftRight = 'leftCardBlank';
+    compareCardsArray.splice(indexToRemove, 1, {location: leftRight});
+    indexToRemove ? rightCardBlankUpdate = true : leftCardBlankUpdate = true;
+  }
+
+  updateAtLeastOneCardBlank (district) {
+    if (compareCardsArray[0].location === 'leftCardBlank') {
+      compareCardsArray.splice(0, 1, district);
+      leftCardBlankUpdate = false;
+    } else if (compareCardsArray[1].location === 'rightCardBlank') {
+      compareCardsArray.splice(1, 1, district);
+      rightCardBlankUpdate = false;
+    }
+  }
+
+  updateBothCardsPopulated(district) {
+    leftRightIndicatorUpdate = this.state.leftRightIndicator;
+    if (leftRightIndicatorUpdate === 'left') {
+      compareCardsArray.splice(1, 1, district);
+      leftRightIndicatorUpdate = 'right';
+    } else {
+      compareCardsArray.splice(0, 1, district);
+      leftRightIndicatorUpdate = 'left';
+    }
   }
 
   render() {
     return (
-      <div id="heading">Welcome To Headcount 2.0 Counting Heads
+      <div id="heading">Welcome To Headcount 2.0, Counting Heads Since 2017
         <SearchField onChange={ this.handleChange.bind(this) }/>
         <CompareCards   cardsToCompare={ this.state.compareCards }
                         districtClass={ districtRepository }
-        />
+                        leftCardBlank={ this.state.leftCardBlank }
+                        rightCardBlank={ this.state.rightCardBlank }/>
         <CardList districtData={ this.state.districts }
-                  handleClick={ this.handleClick.bind(this)}/>
+                  handleClick={ this.handleClick.bind(this)}
+                  cardsToCompare={ this.state.compareCards }/>
       </div>
     );
   }
