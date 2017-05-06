@@ -24,7 +24,7 @@ body {
   max-width: 150px;
 }
 
-.district-card-cicked {
+.selected {
   border: 2px solid blue;
   max-width: 150px;
 }

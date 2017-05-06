@@ -2,7 +2,8 @@ import React from 'react';
 
 const CompareCard = ( {cardsToCompare, districtClass} ) => {
 
-  if (cardsToCompare[0].location === 'leftCardBlank' || cardsToCompare[1].location === 'rightCardBlank'){
+  if (cardsToCompare[0].location === 'leftCardBlank' || 
+      cardsToCompare[1].location === 'rightCardBlank'){
     return(
       <div>  POPULATE BOTH CARDS YO  </div>
     )

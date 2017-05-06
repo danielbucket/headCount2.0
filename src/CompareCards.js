@@ -9,18 +9,18 @@ const CompareCards = ( {cardsToCompare, districtClass, leftCardBlank, rightCardB
     )
   }
 
-  console.log(cardsToCompare);
-
   return(
     <div className='compare-cards-container'>
       <Card district={ cardsToCompare[0] }
             key={ cardsToCompare[0].location }
-            cardBlank={ leftCardBlank }/>
+            cardBlank={ leftCardBlank }
+            cardSelected={ cardsToCompare }/>
       <CompareCard  cardsToCompare={ cardsToCompare }
                     districtClass={ districtClass }  />
       <Card district={ cardsToCompare[1] }
             key={ cardsToCompare[1].location }
-            cardBlank={ rightCardBlank }/>
+            cardBlank={ rightCardBlank }
+            cardSelected={ cardsToCompare }/>
     </div>
   )
 }

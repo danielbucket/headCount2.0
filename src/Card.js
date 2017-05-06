@@ -1,48 +1,39 @@
 import React from 'react';
 
-var cardClass = 'district-card';
-
-const Card = ( {district, handleClick, cardBlank} ) => {
+const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
 
   if (cardBlank) {
     return (
       <div>BLANK CARD</div>
     )
   } else {
+    let highLowClass;
+    let yearKeys = Object.keys(district.data)
 
-  let highLowClass;
+    const yearData = yearKeys.map( year => {
+      district.data[year] <= 0.500 ? highLowClass = 'low-percent' : highLowClass = 'high-percent';
+      return <h4 className={highLowClass}
+                 key={year} >
+                 {year}: {district.data[year]}
+             </h4>
+    })
 
-  let yearKeys = Object.keys(district.data)
+    let cardClass;
 
-  const yearData = yearKeys.map( year => {
-    district.data[year] <= 0.5 ? highLowClass = 'low-percent' : highLowClass = 'high-percent';
-    return <h4 className={highLowClass}
-               key={year} >
-               {year}: {district.data[year]}
-           </h4>
-  })
+    if( district.location === cardSelected[0].location ||
+        district.location === cardSelected[1].location) {
+      cardClass = 'district-card selected';
+    } else {
+      cardClass = 'district-card';
+    }
 
-  // const manageClick = () => {
-  //
-  //   if (cardClass === 'district-card-unclicked') {
-  //     cardClass = 'district-card-clicked'
-  //   } else if (cardClass === 'district-card-clicked') {
-  //     cardClass = 'district-card-unclicked'
-  //   }
-  //   console.log(cardClass);
-  //   //the cardClass value is changing, but a render needs to happen before the changes can take place
-  //
-  //   handleClick(district)
-  // }
-
-    return (
-      <div className={ cardClass }
-        onClick={ e => { handleClick(district) }}
-        >
-          <h3 className="district-name">{ district.location }</h3>
-          <div className="year-data">{ yearData }</div>
-        </div>
-      )
+    return(
+      <div  className={ cardClass }
+            onClick={ e => { handleClick(district) }}>
+        <h3 className="district-name">{ district.location }</h3>
+        <div className="year-data">{ yearData }</div>
+      </div>
+    )
   }
 
 }
