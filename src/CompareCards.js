@@ -34,10 +34,10 @@ const CompareCards = ( {cardsToCompare, districtClass, leftCardBlank, rightCardB
   )
 }
 CompareCards.propTypes = {
-  cardsToCompare: PropTypes.array.isRequired,
-  leftCardBlank: PropTypes.bool.isRequired,
-  rightCardBlank: PropTypes.bool.isRequired,
-  districtClass: PropTypes.object.isRequired
+  cardsToCompare: PropTypes.array,
+  leftCardBlank: PropTypes.bool,
+  rightCardBlank: PropTypes.bool,
+  districtClass: PropTypes.object
 }
 
 export default CompareCards

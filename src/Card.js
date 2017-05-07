@@ -5,7 +5,7 @@ const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
 
   if (cardBlank) {
     return (
-      <div className='blank-card'>BLANK CARD</div>
+      <div className='blank-card'></div>
     )
   } else {
     let highLowClass;
@@ -35,9 +35,13 @@ const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
       cardClass = 'district-card';
     }
 
+    const submitClick = () => {
+      handleClick(district)
+    }
+
     return(
       <div  className={ cardClass }
-            onClick={ e => { handleClick(district) }}>
+            onClick={ e => { submitClick() }}>
         <div className="card-sub-container">
           <h3 className="district-name">{ district.location }</h3>
           <div className="year-data">{ yearData }</div>
@@ -49,9 +53,9 @@ const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
 }
 
 Card.propTypes = {
-  district: PropTypes.object.isRequired,
-  cardBlank: PropTypes.bool.isRequired,
-  cardSelected: PropTypes.array.isRequired
+  district: PropTypes.object,
+  cardBlank: PropTypes.bool,
+  cardSelected: PropTypes.array
 }
 
 

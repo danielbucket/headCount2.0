@@ -7,7 +7,7 @@ import kinderData from '../../data/kindergartners_in_full_day_program.js';
 
 const stub = new DistrictRepository(kinderData)
 
-describe.skip('CardList', () => {
+describe('CardList', () => {
 
   it('1. should have a class named card-container', () => {
     const wrapper = shallow(<CardList districtData={{key: 'value'}}/>)
@@ -21,7 +21,7 @@ describe.skip('CardList', () => {
     const wrapper = mount(<CardList districtData={ mockData }
                                     cardsToCompare={ mockArr }/>)
 
-    expect(wrapper.find('.district-card')).toBeFalsy()
+    expect(wrapper.find('.district-card').length).toBe(0)
   })
 
   it('3. should have 3 district-card classes when passed info for 3 cards', () => {

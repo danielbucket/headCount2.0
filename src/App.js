@@ -12,7 +12,6 @@ let leftCardBlankUpdate;
 let rightCardBlankUpdate;
 let leftRightIndicatorUpdate;
 
-
 class App extends Component {
   constructor () {
     super()
@@ -55,7 +54,7 @@ class App extends Component {
     this.updateAtLeastOneCardBlank(district)
 
 
-          //Both cards are populated {
+      //Both cards are populated 
     } else if ( compareCardsArray[0].location !== 'leftCardBlank' &&
                 compareCardsArray[1].location !== 'rightCardBlank') {
       this.updateBothCardsPopulated(district)
@@ -138,11 +137,9 @@ class App extends Component {
         </div>
         </div>
 
-        <div className="cardList-container">
-          <CardList districtData={ this.state.districts }
-                    handleClick={ this.handleClick.bind(this)}
-                    cardsToCompare={ this.state.compareCards }/>>
-        </div>
+        <CardList districtData={ this.state.districts }
+                  handleClick={ this.handleClick.bind(this)}
+                  cardsToCompare={ this.state.compareCards }/>
 
       </div>
     );
