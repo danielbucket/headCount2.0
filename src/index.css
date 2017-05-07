@@ -2,14 +2,86 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #7e7f80;
+}
+#heading-container {
+  /*display: flex;*/
+  /*justify-content: center;*/
+  position: fixed;
+  left: 0;
+  top: 30px;
+  width: 230px;;
+  text-align: center;
+}
+
+.heading {
+  width: 210px;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.search-field {
+  position: fixed;
+  right: 0;
+  top: 30px;
+  margin-right: 0;
+  font-size: 12px;
+  width: 230px;
+}
+
+.about {
+  text-align: left;
+  font-size: 12px;
+}
+
+.year-blue {
+  color: #0054ae;
+}
+
+.year-red {
+  color: #b10000;
+}
+
+.compare-cards-container {
+  /*display: flex;*/
+  /*justify-content: center;*/
+  width: 90%;
+  box-shadow: 0px 0px 12px 3px blue;
+  margin-top: 30px;
+}
+
+.compare-cards-box {
+  border: 1px solid green;
+
+}
+
+.compare-card {
+
+}
+
+.year-data {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.low-percent, .high-percent {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 50%;
 }
 
 .low-percent {
-  color: red;
+  color: #b10000;
 }
 
 .high-percent {
-  color: blue;
+  color: #0054ae;
 }
 
 .card-container, .compare-cards-container {
@@ -17,14 +89,58 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-sub-container {
+  width: 95%;
+  height: 95%;
+  margin: auto;
+  text-align: center;
+}
+
+.compare-cards-container {
+  width: 50%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .district-card {
-  border: 1px solid black;
-  max-width: 150px;
+  width: 200px;
+  box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.11);
+}
+
+.district-name {
+  color: white;
+  font-size: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.11);
+}
+
+.district-data-year, .district-data-data {
+  font-size: 12px;
+  /*letter-spacing: 2px;*/
+  margin: 10px;
+  width: auto;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+
+}
+
+.district-data-year {
+  width: 35px;
+  margin-right: 3px;
+  margin-left: 0;
+}
+
+.district-data-data {
+
 }
 
 .selected {
-  border: 2px solid blue;
-  max-width: 150px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 12px 3px rgba(255, 193, 7, 0.68)
 }
