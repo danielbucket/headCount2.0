@@ -99,43 +99,51 @@ class App extends Component {
     }
   }
 
-  render() {    
+  render() {
     return (
-      <div>
+      <div className="App-container">
+
         <div id="heading-container">
           <div className="heading">
-            <h4 className="title">
-              Counting Heads Since 2017
-            </h4>
-
+              <h4 className="title">
+                Counting Heads Since 2017
+              </h4>
+              <div className="search-field">
+                <p className="search-field-text">
+                  Search for a Location
+                </p>
+                <SearchField onChange={ this.handleChange.bind(this) }/>
+              </div>
           </div>
-          <div className="search-field">
-            Search for a Location
-            <SearchField onChange={ this.handleChange.bind(this) }/>
-            <div className="about">
-              <p>
-                Data shown in <span className="year-red">red</span> represents a graduation rate of below 50%.
-              </p>
-              <p>
-                Data shown in <span className="year-blue">blue</span> represents a graduation rate of above 50%.
-              </p>
-              <p>
-                After selecting two cards, scroll back to the <span>top</span> to see the compared data.
-              </p>
-            </div>
-
-          </div>
-
         </div>
+
         <div className="compare-cards-container">
           <CompareCards   cardsToCompare={ this.state.compareCards }
                         districtClass={ districtRepository }
                         leftCardBlank={ this.state.leftCardBlank }
                         rightCardBlank={ this.state.rightCardBlank }/>
+
+          <div className="legend">
+            <p>
+              Data shown in <span className="year-red">red</span> represents a graduation rate of below 50%.
+            </p>
+            <p>
+              Data shown in <span className="year-blue">blue</span> represents a graduation rate of above 50%.
+            </p>
         </div>
-        <CardList districtData={ this.state.districts }
-                  handleClick={ this.handleClick.bind(this)}
-                  cardsToCompare={ this.state.compareCards }/>
+        <div className="instruction">
+          <p>
+            After selecting two cards, scroll back to the <span>top</span> to see the compared data.
+          </p>
+        </div>
+        </div>
+
+        <div className="cardList-container">
+          <CardList districtData={ this.state.districts }
+                    handleClick={ this.handleClick.bind(this)}
+                    cardsToCompare={ this.state.compareCards }/>>
+        </div>
+
       </div>
     );
   }
