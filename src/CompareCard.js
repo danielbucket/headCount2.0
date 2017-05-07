@@ -6,7 +6,9 @@ const CompareCard = ( {cardsToCompare, districtClass} ) => {
   if (cardsToCompare[0].location === 'leftCardBlank' ||
       cardsToCompare[1].location === 'rightCardBlank'){
     return(
-      <div className='populate-instructions'>POPULATE BOTH CARDS YO</div>
+      <div className='populate-instructions'>
+        Select two cards below and see the statistical comparison data here.
+      </div>
     )
   } else {
 
@@ -16,9 +18,11 @@ const CompareCard = ( {cardsToCompare, districtClass} ) => {
 
     return(
       <div className='compare-card'>
-        <h2>{location1}: {compareObj[location1]}</h2>
+          <h2>
+            <img src="./img/001-right-arrow.svg" />{location1}: {compareObj[location1]}
+          </h2>
         <h2>{compareObj['compared']}</h2>
-        <h2>{location2}: {compareObj[location2]}</h2>
+        <h2>{location2}: {compareObj[location2]}<img src="./img/002-left-arrow.svg" /></h2>
       </div>
     )
   }

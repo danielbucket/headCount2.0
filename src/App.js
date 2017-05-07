@@ -138,11 +138,9 @@ class App extends Component {
         </div>
         </div>
 
-        <div className="cardList-container">
-          <CardList districtData={ this.state.districts }
-                    handleClick={ this.handleClick.bind(this)}
-                    cardsToCompare={ this.state.compareCards }/>>
-        </div>
+        <CardList districtData={ this.state.districts }
+                  handleClick={ this.handleClick.bind(this)}
+                  cardsToCompare={ this.state.compareCards }/>
 
       </div>
     );
