@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 import CompareCard from './CompareCard';
 
-const CompareCards = ( {cardsToCompare, districtClass, leftCardBlank, rightCardBlank} ) => {
+const CompareCards = ( {cardsToCompare, districtClass, handleClick, leftCardBlank, rightCardBlank} ) => {
   if (!cardsToCompare.length) {
     return (
       <div></div>
@@ -15,6 +15,7 @@ const CompareCards = ( {cardsToCompare, districtClass, leftCardBlank, rightCardB
       <div className="left-card">
         <Card district={ cardsToCompare[0] }
               key={ cardsToCompare[0].location }
+              handleClick={ handleClick }
               cardBlank={ leftCardBlank }
               cardSelected={ cardsToCompare }/>
       </div>
@@ -27,6 +28,7 @@ const CompareCards = ( {cardsToCompare, districtClass, leftCardBlank, rightCardB
       <div className="right-card">
         <Card district={ cardsToCompare[1] }
               key={ cardsToCompare[1].location }
+              handleClick={ handleClick }
               cardBlank={ rightCardBlank }
               cardSelected={ cardsToCompare }/>
       </div>
