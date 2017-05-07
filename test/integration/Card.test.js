@@ -55,4 +55,24 @@ describe('Card Test', () => {
     expect(wrapper.find('.selected').length).toBe(1)
   });
 
+  it.skip('6. when clicked a card should receive a class of "selected"', () => {
+    const cardInfo = {
+      location: 'Colorado',
+      data: []
+    }
+    mockArr = [{location: 'leftCardBlank'}, {location: 'rightCardBlank'}];
+    const mockSelectClick = jest.fn()
+
+    const wrapper = mount(<Card district={ cardInfo }
+                                handleClick= { mockSelectClick }
+                                cardBlank={ false }
+                                cardSelected={ mockArr }/>)
+
+    expect(wrapper.find('.selected').length).toBe(0);
+
+    wrapper.find('.district-card').simulate('click');
+
+    expect(wrapper.find('.selected').length).toBe(1);
+  });
+
 });

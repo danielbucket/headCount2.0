@@ -22,8 +22,8 @@ CardList.propTypes = {
   // districtData: PropTypes.object.isRequired,
   // object is string? string is object?
 
-  handleClick: PropTypes.func.isRequired,
-  cardsToCompare: PropTypes.array.isRequired
+  handleClick: PropTypes.func,
+  cardsToCompare: PropTypes.array
 }
 
 export default CardList
