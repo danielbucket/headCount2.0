@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
 
@@ -14,7 +15,7 @@ const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
       district.data[year] <= 0.500 ? highLowClass = 'low-percent' : highLowClass = 'high-percent';
       return <h4 className={highLowClass}
                  key={year} >
-                 
+
                  <div className="district-data-year">
                    {year}:
                  </div>
@@ -46,5 +47,12 @@ const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
   }
 
 }
+
+Card.propTypes = {
+  district: PropTypes.object.isRequired,
+  cardBlank: PropTypes.bool.isRequired,
+  cardSelected: PropTypes.array.isRequired
+}
+
 
 export default Card

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from './Card';
 
 const CardList = ({ districtData, handleClick, cardsToCompare }) => {
@@ -15,6 +16,14 @@ const CardList = ({ districtData, handleClick, cardsToCompare }) => {
     <div className="card-container">{ cardArr }</div>
   )
 
+}
+
+CardList.propTypes = {
+  // districtData: PropTypes.object.isRequired,
+  // object is string? string is object?
+
+  handleClick: PropTypes.func.isRequired,
+  cardsToCompare: PropTypes.array.isRequired
 }
 
 export default CardList

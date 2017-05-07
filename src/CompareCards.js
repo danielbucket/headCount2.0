@@ -1,6 +1,7 @@
-import React from 'react'
-import Card from './Card'
-import CompareCard from './CompareCard'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Card from './Card';
+import CompareCard from './CompareCard';
 
 const CompareCards = ( {cardsToCompare, districtClass, leftCardBlank, rightCardBlank} ) => {
   if (!cardsToCompare.length) {
@@ -31,6 +32,12 @@ const CompareCards = ( {cardsToCompare, districtClass, leftCardBlank, rightCardB
       </div>
     </div>
   )
+}
+CompareCards.propTypes = {
+  cardsToCompare: PropTypes.array.isRequired,
+  leftCardBlank: PropTypes.bool.isRequired,
+  rightCardBlank: PropTypes.bool.isRequired,
+  districtClass: PropTypes.object.isRequired
 }
 
 export default CompareCards

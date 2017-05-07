@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 import CardList from './CardList';
 import DistrictRepository from './helper.js'
 import kinderData from '../data/kindergartners_in_full_day_program.js';
-import SearchField from './SearchField'
-import CompareCards from './CompareCards'
+import SearchField from './SearchField';
+import CompareCards from './CompareCards';
 
 let districtRepository = new DistrictRepository(kinderData)
 let compareCardsArray;
@@ -99,7 +99,7 @@ class App extends Component {
     }
   }
 
-  render() {
+  render() {    
     return (
       <div>
         <div id="heading-container">
@@ -112,7 +112,7 @@ class App extends Component {
           <div className="search-field">
             Search for a Location
             <SearchField onChange={ this.handleChange.bind(this) }/>
-            <p className="about">
+            <div className="about">
               <p>
                 Data shown in <span className="year-red">red</span> represents a graduation rate of below 50%.
               </p>
@@ -122,7 +122,7 @@ class App extends Component {
               <p>
                 After selecting two cards, scroll back to the <span>top</span> to see the compared data.
               </p>
-            </p>
+            </div>
 
           </div>
 
@@ -139,6 +139,8 @@ class App extends Component {
       </div>
     );
   }
+
 }
+
 
 export default App;
