@@ -5,7 +5,7 @@ const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
 
   if (cardBlank) {
     return (
-      <div>BLANK CARD</div>
+      <div className='blank-card'>BLANK CARD</div>
     )
   } else {
     let highLowClass;

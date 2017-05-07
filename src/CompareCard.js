@@ -6,7 +6,7 @@ const CompareCard = ( {cardsToCompare, districtClass} ) => {
   if (cardsToCompare[0].location === 'leftCardBlank' ||
       cardsToCompare[1].location === 'rightCardBlank'){
     return(
-      <div>POPULATE BOTH CARDS YO</div>
+      <div className='populate-instructions'>POPULATE BOTH CARDS YO</div>
     )
   } else {
 
