@@ -107,6 +107,11 @@ class App extends Component {
             <h4 className="title">
               Counting Heads Since 2017
             </h4>
+
+          </div>
+          <div className="search-field">
+            Search for a Location
+            <SearchField onChange={ this.handleChange.bind(this) }/>
             <p className="about">
               <p>
                 Data shown in <span className="year-red">red</span> represents a graduation rate of below 50%.
@@ -118,12 +123,9 @@ class App extends Component {
                 After selecting two cards, scroll back to the <span>top</span> to see the compared data.
               </p>
             </p>
-          </div>
-          <div className="search-field">
-            Search for a Location
 
-            <SearchField onChange={ this.handleChange.bind(this) }/>
           </div>
+
         </div>
         <div className="compare-cards-container">
           <CompareCards   cardsToCompare={ this.state.compareCards }
