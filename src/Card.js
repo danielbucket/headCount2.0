@@ -14,7 +14,14 @@ const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
       district.data[year] <= 0.500 ? highLowClass = 'low-percent' : highLowClass = 'high-percent';
       return <h4 className={highLowClass}
                  key={year} >
-                 {year}: {district.data[year]}
+                 
+                 <div className="district-data-year">
+                   {year}:
+                 </div>
+
+                 <div className="district-data-data">
+                   {district.data[year]}
+                 </div>
              </h4>
     })
 
@@ -30,8 +37,10 @@ const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
     return(
       <div  className={ cardClass }
             onClick={ e => { handleClick(district) }}>
-        <h3 className="district-name">{ district.location }</h3>
-        <div className="year-data">{ yearData }</div>
+        <div className="card-sub-container">
+          <h3 className="district-name">{ district.location }</h3>
+          <div className="year-data">{ yearData }</div>
+        </div>
       </div>
     )
   }

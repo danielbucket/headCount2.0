@@ -101,12 +101,38 @@ class App extends Component {
 
   render() {
     return (
-      <div id="heading">Welcome To Headcount 2.0, Counting Heads Since 2017
-        <SearchField onChange={ this.handleChange.bind(this) }/>
-        <CompareCards   cardsToCompare={ this.state.compareCards }
+      <div>
+        <div id="heading-container">
+          <div className="heading">
+            <h4 className="title">
+              Counting Heads Since 2017
+            </h4>
+
+          </div>
+          <div className="search-field">
+            Search for a Location
+            <SearchField onChange={ this.handleChange.bind(this) }/>
+            <p className="about">
+              <p>
+                Data shown in <span className="year-red">red</span> represents a graduation rate of below 50%.
+              </p>
+              <p>
+                Data shown in <span className="year-blue">blue</span> represents a graduation rate of above 50%.
+              </p>
+              <p>
+                After selecting two cards, scroll back to the <span>top</span> to see the compared data.
+              </p>
+            </p>
+
+          </div>
+
+        </div>
+        <div className="compare-cards-container">
+          <CompareCards   cardsToCompare={ this.state.compareCards }
                         districtClass={ districtRepository }
                         leftCardBlank={ this.state.leftCardBlank }
                         rightCardBlank={ this.state.rightCardBlank }/>
+        </div>
         <CardList districtData={ this.state.districts }
                   handleClick={ this.handleClick.bind(this)}
                   cardsToCompare={ this.state.compareCards }/>

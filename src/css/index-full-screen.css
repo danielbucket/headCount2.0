@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: rgba(126, 127, 128, 0.84);
+}
+#heading-container {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.heading {
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.search-field {
+  position: absolute;
+  right: 2%;
+  top: 20px;
+  font-size: 14px;
+  width: 20%;
+}
+
+#search-input {
+  border: none;
+  width: 200px;
+  height: 20px;
+
+}
+
+.about {
+  text-align: left;
+  font-size: 12px;
+}
+
+.year-blue {
+  color: #0054ae;
+}
+
+.year-red {
+  color: #b10000;
+}
+
+.compare-cards-container {
+  width: 90%;
+  box-shadow: 0px 0px 12px 3px rgba(241, 241, 241, 0.35);
+  /*box-shadow: 0px 0px 12px 3px #0054ae;*/
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.compare-cards-box {
+  border: 1px solid green;
+
+
+}
+
+.compare-card {
+
+}
+
+.year-data {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.low-percent, .high-percent {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 50%;
+}
+
+.low-percent {
+  color: #b10000;
+}
+
+.high-percent {
+  color: #0054ae;
+}
+
+.card-container, .compare-cards-container {
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-sub-container {
+  width: 95%;
+  height: 95%;
+  margin: auto;
+  text-align: center;
+}
+
+.compare-cards-container {
+  width: 50%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.district-card {
+  width: 196px;
+  padding: 2px;
+  box-shadow: 0px 0px 12px 3px rgba(0, 0, 0, 0.11);
+}
+
+.district-name {
+  color: white;
+  letter-spacing: .5px;
+  font-size: 12px;
+  padding-top: 2px;
+  padding-bottom: 8px;
+  height: 24px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.11);
+}
+
+.district-data-year, .district-data-data {
+  font-size: 12px;
+  /*letter-spacing: 2px;*/
+  margin: 10px;
+  width: auto;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
+
+}
+
+.district-data-year {
+  width: 35px;
+  margin-right: 3px;
+  margin-left: 0;
+}
+
+.district-data-data {
+
+}
+
+.selected {
+  box-sizing: border-box;
+  box-shadow: 0px 0px 12px 3px rgba(255, 193, 7, 0.68)
+}
