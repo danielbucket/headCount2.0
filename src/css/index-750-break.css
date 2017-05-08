@@ -1,0 +1,30 @@
+@media only screen and (max-width: 750px) {
+
+    .compare-cards-box {
+      display: block;
+    }
+
+    .compare-card-container {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .left-card {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .right-card {
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .compare-card h2 {
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .compare-card p {
+      text-align: center;
+    }
+}

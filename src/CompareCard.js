@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CompareCard = ( {cardsToCompare, districtClass} ) => {
+const CompareCard = ( {cardsToCompare, districtClass, rightArrow, leftArrow} ) => {
 
   if (cardsToCompare[0].location === 'leftCardBlank' ||
       cardsToCompare[1].location === 'rightCardBlank'){
@@ -18,11 +18,29 @@ const CompareCard = ( {cardsToCompare, districtClass} ) => {
 
     return(
       <div className='compare-card'>
-          <h2>
-            <img src="./img/001-right-arrow.svg" />{location1}: {compareObj[location1]}
+          <h2 className="top-left-comparitor">
+
+            <h4 className="comparitor-location">
+              '{location1}'
+            </h4>
+            <p>
+              Comparison Ratio: {compareObj[location1]}
+            </p>
+
           </h2>
-        <h2>{compareObj['compared']}</h2>
-        <h2>{location2}: {compareObj[location2]}<img src="./img/002-left-arrow.svg" /></h2>
+        <h2 className="center-comparision-value">
+          <p>Median District Graduation:</p>
+          <p>{compareObj['compared']}</p>
+        </h2>
+        <h2 className="bottom-right-comparitor">
+          <h4 className="comparitor-location">
+            '{location2}'
+          </h4>
+          <p>
+            Average graduation rate: {compareObj[location2]}
+          </p>
+
+        </h2>
       </div>
     )
   }

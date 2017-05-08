@@ -105,7 +105,9 @@ class App extends Component {
         <div id="heading-container">
           <div className="heading">
               <h4 className="title">
-                Counting Heads Since 2017
+                USGS Special Dept. of Educational Head Counting Special Services Office of the Government
+                <br/>
+                circa 1996
               </h4>
               <div className="search-field">
                 <p className="search-field-text">
@@ -121,7 +123,8 @@ class App extends Component {
                         districtClass={ districtRepository }
                         handleClick={ this.handleClick.bind(this) }
                         leftCardBlank={ this.state.leftCardBlank }
-                        rightCardBlank={ this.state.rightCardBlank }/>
+                        rightCardBlank={ this.state.rightCardBlank }
+                      />
 
           <div className="legend">
             <p>
