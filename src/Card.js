@@ -8,10 +8,10 @@ const Card = ( {district, handleClick, cardBlank, cardSelected} ) => {
       <div className='blank-card'></div>
     )
   } else {
-    let highLowClass;
     let yearKeys = Object.keys(district.data)
 
     const yearData = yearKeys.map( year => {
+      let highLowClass;
       district.data[year] <= 0.500 ? highLowClass = 'low-percent' : highLowClass = 'high-percent';
       return <h4 className={highLowClass}
                  key={year} >

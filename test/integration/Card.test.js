@@ -6,9 +6,10 @@ let cardInfo;
 let mockArr;
 
 describe('Card Test', () => {
+
   beforeEach( () => {
-    cardInfo = { location: '', data: [] };
-    mockArr = [{location: 'Colorado'}, {location: 'rightCardBlank'}];
+     cardInfo = { location: '', data: [] };
+     mockArr = [{location: 'Colorado'}, {location: 'rightCardBlank'}];
   })
 
   it('1. has a class of district-card', () => {
@@ -55,16 +56,16 @@ describe('Card Test', () => {
     expect(wrapper.find('.selected').length).toBe(1)
   });
 
-  it.skip('6. when clicked a card should receive a class of "selected"', () => {
+  it('6. when clicked, a card should receive a class of "selected"', () => {
     const cardInfo = {
       location: 'Colorado',
       data: []
     }
     mockArr = [{location: 'leftCardBlank'}, {location: 'rightCardBlank'}];
-    const mockSelectClick = jest.fn()
+    const mockSelectClick = jest.fn();
 
     const wrapper = mount(<Card district={ cardInfo }
-                                handleClick= { mockSelectClick }
+                                handleClick={ mockSelectClick }
                                 cardBlank={ false }
                                 cardSelected={ mockArr }/>)
 
@@ -72,7 +73,8 @@ describe('Card Test', () => {
 
     wrapper.find('.district-card').simulate('click');
 
-    expect(wrapper.find('.selected').length).toBe(1);
+    expect(mockSelectClick).toHaveBeenCalledTimes(1);
+    expect(mockSelectClick).toHaveBeenCalledWith( cardInfo );
   });
 
 });

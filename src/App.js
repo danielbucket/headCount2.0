@@ -43,22 +43,22 @@ class App extends Component {
     rightCardBlankUpdate = this.state.rightCardBlank;
 
     //Location has already been selected
-  if (district.location === compareCardsArray[0].location ||
-      district.location === compareCardsArray[1].location) {
-    this.updateSelectedCards (district)
-  }
+    if (district.location === compareCardsArray[0].location ||
+        district.location === compareCardsArray[1].location) {
+      this.updateSelectedCards (district)
+    }
 
     //At least one of the cards is blank
     else if ( compareCardsArray[0].location === 'leftCardBlank' ||
               compareCardsArray[1].location === 'rightCardBlank' ) {
-    this.updateAtLeastOneCardBlank(district)
-
+      this.updateAtLeastOneCardBlank(district)
 
       //Both cards are populated
-    } else if ( compareCardsArray[0].location !== 'leftCardBlank' &&
+    }
+    else if ( compareCardsArray[0].location !== 'leftCardBlank' &&
                 compareCardsArray[1].location !== 'rightCardBlank') {
       this.updateBothCardsPopulated(district)
-      }
+    }
 
     this.setState({
       compareCards: compareCardsArray,
@@ -72,7 +72,7 @@ class App extends Component {
   updateSelectedCards (district) {
     const indexToRemove = compareCardsArray.findIndex( card => card.location === district.location )
     let leftRight;
-    indexToRemove ? leftRight = 'rightCardBlank' : leftRight = 'leftCardBlank';
+    leftRight = indexToRemove ? 'rightCardBlank' : 'leftCardBlank';
     compareCardsArray.splice(indexToRemove, 1, {location: leftRight});
     indexToRemove ? rightCardBlankUpdate = true : leftCardBlankUpdate = true;
   }
@@ -105,7 +105,7 @@ class App extends Component {
         <div id="heading-container">
           <div className="heading">
               <h4 className="title">
-                USGS Special Dept. of Educational Head Counting Special Services Office of the Government
+                USGS Special Dept. of Educational Head Counting Services Office of the Government
                 <br/>
                 circa 1996
               </h4>
@@ -133,12 +133,12 @@ class App extends Component {
             <p>
               Data shown in <span className="year-blue">blue</span> represents a graduation rate of above 50%.
             </p>
-        </div>
-        <div className="instruction">
-          <p>
-            After selecting two cards, scroll back to the <span>top</span> to see the compared data.
-          </p>
-        </div>
+          </div>
+          <div className="instruction">
+            <p>
+              After selecting two cards, scroll back to the <span>top</span> to see the compared data.
+            </p>
+          </div>
         </div>
 
         <CardList districtData={ this.state.districts }
