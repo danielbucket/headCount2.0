@@ -23,7 +23,8 @@ describe('CompareCards Test', () => {
     const wrapper = mount(<CompareCards districtClass={ cardInfo }
                                         cardsToCompare={ mockArr }
                                         leftCardBlank={ false }
-                                        rightCardBlank={ true }/>)
+                                        rightCardBlank={ true }
+                                      />)
 
     expect(wrapper.find('.district-card').length).toBe(1)
   });

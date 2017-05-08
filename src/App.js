@@ -6,11 +6,7 @@ import kinderData from '../data/kindergartners_in_full_day_program.js';
 import SearchField from './SearchField';
 import CompareCards from './CompareCards';
 
-let districtRepository = new DistrictRepository(kinderData)
-let compareCardsArray;
-let leftCardBlankUpdate;
-let rightCardBlankUpdate;
-let leftRightIndicatorUpdate;
+const districtRepository = new DistrictRepository(kinderData)
 
 class App extends Component {
   constructor () {
@@ -38,46 +34,52 @@ class App extends Component {
   }
 
   handleClick (district) {
-    compareCardsArray = this.state.compareCards;
-    leftCardBlankUpdate = this.state.leftCardBlank;
-    rightCardBlankUpdate = this.state.rightCardBlank;
+    let compareCardsArray = this.state.compareCards;
+    let leftCardBlankUpdate = this.state.leftCardBlank;
+    let rightCardBlankUpdate = this.state.rightCardBlank;
 
     //Location has already been selected
     if (district.location === compareCardsArray[0].location ||
         district.location === compareCardsArray[1].location) {
-      this.updateSelectedCards (district)
+      this.updateSelectedCards (district, compareCardsArray, leftCardBlankUpdate, rightCardBlankUpdate)
     }
 
     //At least one of the cards is blank
     else if ( compareCardsArray[0].location === 'leftCardBlank' ||
               compareCardsArray[1].location === 'rightCardBlank' ) {
-      this.updateAtLeastOneCardBlank(district)
+      this.updateAtLeastOneCardBlank(district, compareCardsArray, leftCardBlankUpdate, rightCardBlankUpdate)
 
       //Both cards are populated
     }
     else if ( compareCardsArray[0].location !== 'leftCardBlank' &&
                 compareCardsArray[1].location !== 'rightCardBlank') {
-      this.updateBothCardsPopulated(district)
+      this.updateBothCardsPopulated(district, compareCardsArray)
     }
+
+  }
+
+  updateSelectedCards (district, compareCardsArray, leftCardBlankUpdate, rightCardBlankUpdate) {
+    const indexToRemove = compareCardsArray.findIndex( card => card.location === district.location )
+    let leftRight;
+
+    if (indexToRemove) {
+      leftRight = 'rightCardBlank';
+      rightCardBlankUpdate = true;
+    } else {
+      leftRight = 'leftCardBlank';
+      leftCardBlankUpdate = true
+    }
+    compareCardsArray.splice(indexToRemove, 1, {location: leftRight});
 
     this.setState({
       compareCards: compareCardsArray,
-      leftRightIndicator: leftRightIndicatorUpdate,
       leftCardBlank: leftCardBlankUpdate,
       rightCardBlank: rightCardBlankUpdate
     })
-
   }
 
-  updateSelectedCards (district) {
-    const indexToRemove = compareCardsArray.findIndex( card => card.location === district.location )
-    let leftRight;
-    leftRight = indexToRemove ? 'rightCardBlank' : 'leftCardBlank';
-    compareCardsArray.splice(indexToRemove, 1, {location: leftRight});
-    indexToRemove ? rightCardBlankUpdate = true : leftCardBlankUpdate = true;
-  }
+  updateAtLeastOneCardBlank (district, compareCardsArray, leftCardBlankUpdate, rightCardBlankUpdate) {
 
-  updateAtLeastOneCardBlank (district) {
     if (compareCardsArray[0].location === 'leftCardBlank') {
       compareCardsArray.splice(0, 1, district);
       leftCardBlankUpdate = false;
@@ -85,10 +87,17 @@ class App extends Component {
       compareCardsArray.splice(1, 1, district);
       rightCardBlankUpdate = false;
     }
+
+    this.setState({
+      compareCards: compareCardsArray,
+      leftCardBlank: leftCardBlankUpdate,
+      rightCardBlank: rightCardBlankUpdate
+    })
   }
 
-  updateBothCardsPopulated(district) {
-    leftRightIndicatorUpdate = this.state.leftRightIndicator;
+  updateBothCardsPopulated(district, compareCardsArray) {
+    let leftRightIndicatorUpdate = this.state.leftRightIndicator;
+
     if (leftRightIndicatorUpdate === 'left') {
       compareCardsArray.splice(1, 1, district);
       leftRightIndicatorUpdate = 'right';
@@ -96,6 +105,10 @@ class App extends Component {
       compareCardsArray.splice(0, 1, district);
       leftRightIndicatorUpdate = 'left';
     }
+    this.setState({
+      leftRightIndicator: leftRightIndicatorUpdate,
+      compareCards: compareCardsArray
+    })
   }
 
   render() {

@@ -18,28 +18,19 @@ const CompareCard = ( {cardsToCompare, districtClass, rightArrow, leftArrow} ) =
 
     return(
       <div className='compare-card'>
-          <h2 className="top-left-comparitor">
+        <h2 className="top-left-comparitor">
 
-            <h4 className="comparitor-location">
-              '{location1}'
-            </h4>
-            <p>
-              Comparison Ratio: {compareObj[location1]}
-            </p>
+          <p className="comparitor-location">'{location1}'</p>
+          <p>Comparison Ratio: {compareObj[location1]}</p>
 
-          </h2>
+        </h2>
         <h2 className="center-comparision-value">
           <p>Median District Graduation:</p>
           <p>{compareObj['compared']}</p>
         </h2>
         <h2 className="bottom-right-comparitor">
-          <h4 className="comparitor-location">
-            '{location2}'
-          </h4>
-          <p>
-            Average graduation rate: {compareObj[location2]}
-          </p>
-
+          <p className="comparitor-location">'{location2}'</p>
+          <p>Average graduation rate: {compareObj[location2]}</p>
         </h2>
       </div>
     )
